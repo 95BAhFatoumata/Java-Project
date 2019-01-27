@@ -23,10 +23,9 @@ public class LancerClient {
          
          InterfaceLabyrinhe stub = (InterfaceLabyrinhe) Naming.lookup("rmi://localhost:1099/by");
          ClientImpl client = new ClientImpl();
-        System.out.println(""+client.toString());
          System.out.println(""+stub.toString());
-        client.saisirPseudo();
-        stub.connexion(client);
+         client.saisirPseudo();
+         stub.connexion(client);
         
               do
             {
