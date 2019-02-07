@@ -59,7 +59,8 @@ public class Registre {
 		java.sql.Statement state;
 		try {
 			state = idConnection.createStatement();
-			 ResultSet res = state.executeQuery(requete);
+			 
+                       ResultSet res = state.executeQuery(requete);
                while(res.next())
              {
                   resultat= res.getString(1);

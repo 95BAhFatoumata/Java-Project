@@ -24,25 +24,21 @@ public class Personne implements Serializable {
     private Scanner sc;
     private String nom;
     private int numeropiece;
-    private Integer vieJoueur = 10;
-    private Integer nbreCombat=0;
+   
     
     private InterfaceClient client;
-    public Personne(String nom, int numeropiece) {
-        this.nom = nom;
-        this.numeropiece = numeropiece;
-    }
+    
     public Personne(String nom, int numeropiece,InterfaceClient client) {
         this.nom = nom;
         this.numeropiece = numeropiece;
         this.client=client;
     }
     
-    public  Personne()
-    {
-        
+    public Personne () {
+    
     }
-
+    
+    
     public String getNom() {
         return nom;
     }
@@ -59,27 +55,7 @@ public class Personne implements Serializable {
         this.numeropiece = numeropiece;
     }
     
-    public Integer getVieJoueur() {
-        return vieJoueur;
-    }
-
-    public void setVie(Integer vie) {
-        this.vieJoueur = vie;
-        if(vieJoueur <0){
-        vieJoueur=0;
-        }
-    }
-    public void retirerVieJoueur(Integer vie) {
-        this.vieJoueur -= vie;
-       if(vieJoueur <0){
-        vieJoueur=0;
-        }
-       
-    }
-    public void ajouterVieJoueur(Integer vie) {
-        this.vieJoueur += vie;
-      
-    }
+  
      
     public String toString()
     {
@@ -108,18 +84,8 @@ public class Personne implements Serializable {
        //To change body of generated methods, choose Tools | Templates.
         System.out.println(s);
     }
-     public String choixJoueur() throws RemoteException
-    {
-       return sc.nextLine();
-    }
+ 
 
-    public Integer getNbreCombat() {
-        return nbreCombat;
-    }
-
-    public void setNbreCombat(Integer nbreCombat) {
-        this.nbreCombat = nbreCombat;
-    }
 
    
     

@@ -21,7 +21,7 @@ public class LancerClient {
          choix = new String();
          System.out.println("Lancement du client");
          
-         InterfaceLabyrinhe stub = (InterfaceLabyrinhe) Naming.lookup("rmi://localhost:1099/by");
+         InterfaceLabyrinhe stub = (InterfaceLabyrinhe) Naming.lookup("rmi://localhost:1099/jeu");
          ClientImpl client = new ClientImpl();
          System.out.println(""+stub.toString());
          client.saisirPseudo();

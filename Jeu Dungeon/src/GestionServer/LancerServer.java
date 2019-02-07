@@ -24,14 +24,14 @@ public class LancerServer {
         
          System.out.println("on lance le serveur sur le port 1099");
          LocateRegistry.createRegistry(1099);
-         LabyrintheImpl labyrinthe = new LabyrintheImpl("lab");
+         LabyrintheImpl labyrinthe = new LabyrintheImpl("laby");
          
        
         System.out.println("# Création du Labyrinthe #");
         labyrinthe.CreationDuLabyrinthe();//A terminer
        
             System.out.println(""+labyrinthe.toString());
-        Naming.rebind("rmi://localhost:1099/by", labyrinthe);
+        Naming.rebind("rmi://localhost:1099/jeu", labyrinthe);
         
     }   
 }

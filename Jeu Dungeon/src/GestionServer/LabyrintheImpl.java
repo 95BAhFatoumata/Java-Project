@@ -35,7 +35,7 @@ public class LabyrintheImpl extends UnicastRemoteObject implements InterfaceLaby
       
        for (int i = 1; i < 10; i++) {
            
-          // pieces.add(new Piece(i));
+        //création des pieces du labyrinthe
 
            
        }
@@ -43,21 +43,20 @@ public class LabyrintheImpl extends UnicastRemoteObject implements InterfaceLaby
     
     public void connexion(InterfaceClient client) throws RemoteException {
         
-		 String sortie=new String();
+		 String reponse=new String();
 		 String requeteDeVerificaion;
                  
-                 int vie;
         try {
             registre.connexionBD();
         } catch (SQLException ex) {
             Logger.getLogger(LabyrintheImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
           requeteDeVerificaion="SELECT pseudo FROM \"JOUEUR\" WHERE pseudo='"+client.getNom()+"'";
-          sortie=registre.executerRequete(requeteDeVerificaion);
+          reponse=registre.executerRequete(requeteDeVerificaion);
           // on verifie dans la base de donnée si le pseudo existe
-           if(sortie.equals(client.getNom())&& client.getNom().length()>3)
+           if(reponse.equals(client.getNom())&& client.getNom().length()>3)
            {
-                perso=new Personne();
+                perso = new Personne();
                 //on crée un nouveau personnage
         	perso.setNom(client.getNom());
                 perso.setClient(client);
@@ -72,8 +71,8 @@ public class LabyrintheImpl extends UnicastRemoteObject implements InterfaceLaby
                     perso=new Personne();
         	    requeteDeVerificaion="INSERT INTO \"JOUEUR\" VALUES('"+client.getNom()+"')";
         	    registre.insertion(requeteDeVerificaion);
-                    requeteDeVerificaion="INSERT INTO \"SETROUVER\" VALUES ('"+client.getNom()+"','1')";
-                    registre.insertion(requeteDeVerificaion);
+                  
+           
         	    perso.setNom(client.getNom());
                     perso.setNumeropiece(1);
                     perso.setClient(client);
