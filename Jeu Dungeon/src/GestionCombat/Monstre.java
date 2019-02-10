@@ -6,6 +6,7 @@
 package GestionCombat;
 
 import java.io.Serializable;
+import java.util.Scanner;
 
 /**
  *
@@ -24,6 +25,16 @@ public class Monstre  implements Serializable{
         etatMonstre=false;
         nbreAdversaire=0;
     }
+    
+    public String Menu()
+   {
+       Scanner sc=new Scanner(System.in);
+       System.out.println("****1. attaquer*****************************");
+       System.out.println("****2. Se deplacez ou Fuir le combat ******");
+       System.out.println("****3. Envoyer un message************************");
+       System.out.println("****4. quitter*****************************");
+       return sc.nextLine();
+   }
 
     public String getNomMonstre() {
         return nomMonstre;
