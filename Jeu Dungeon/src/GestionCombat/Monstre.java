@@ -5,7 +5,9 @@
  */
 package GestionCombat;
 
+import GestionPersonnage.Personnage;
 import java.io.Serializable;
+import java.rmi.RemoteException;
 import java.util.Scanner;
 
 /**
@@ -59,7 +61,32 @@ public class Monstre  implements Serializable{
     public void setNbreAdversaire(int nbreAdversaire) {
         this.nbreAdversaire = nbreAdversaire;
     }
+    public void diminuerVieMonstre(Integer vie) {
+        this.vieMonstre -= vie;
+        if(vieMonstre<0){
+        vieMonstre=0;
+        }
+    }
+    public void ajouterVieJoueur(Integer vie) {
+        this.vieMonstre += vie;
+    }
 
+   
+ 
+    
+     public void attaquerPersonnage(Personnage p) throws RemoteException{
+        p.setVie(p.getVieJoueur()-1);
+}
+
+    public boolean isEtatMonstre() {
+        return etatMonstre;
+    }
+
+    public void setEtatMonstre(boolean etatMonstre) {
+        this.etatMonstre = etatMonstre;
+    }
+
+   
     
     
 }
