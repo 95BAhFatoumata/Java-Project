@@ -18,6 +18,7 @@ public class ClientImpl extends UnicastRemoteObject implements InterfaceClient,S
     private int vie;
     private String nom;
     private Scanner sc;
+     int numeropiece = 0;
 
     public String getNom() {
         return nom;
@@ -29,7 +30,14 @@ public class ClientImpl extends UnicastRemoteObject implements InterfaceClient,S
         this.vie = 10;
     }
     
-    
+     public int getNumeropiece()throws RemoteException{
+       
+        return numeropiece;
+    }
+  
+    public void setNumeropiece(int numeropiece)throws RemoteException{
+        this.numeropiece = numeropiece;
+    }
   
     
     public void saisirPseudo()
@@ -59,5 +67,28 @@ public class ClientImpl extends UnicastRemoteObject implements InterfaceClient,S
     public String choixclient() throws RemoteException
     {
        return sc.nextLine();
+    }
+    
+    public String envoyerMessage() throws RemoteException {
+        
+        
+        System.out.println("1: saisir  votre message");
+        System.out.println("2:saisir q pour quittez");
+        
+        Scanner sc=new Scanner(System.in);
+        String Message=new String();
+        String test=new String();
+        Message+="["+nom+"] ";
+        
+        test=sc.nextLine();
+           if(!test.equals("q"))
+           {
+                return      Message+=test;
+           }
+           else
+           {
+              return test;
+           }
+        
     }
 }
