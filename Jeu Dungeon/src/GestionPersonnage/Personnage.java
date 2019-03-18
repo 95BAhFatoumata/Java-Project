@@ -28,6 +28,8 @@ public class Personnage implements Serializable{
         this.client=client;
     }
 
+   
+
     public String getNom() {
         return nom;
     }
@@ -52,6 +54,9 @@ public class Personnage implements Serializable{
         this.numeropiece = numeropiece;
     }
 
+       public void setClient(InterfaceClient client) {
+        this.client = client;
+    }
     public void setVieJoueur(Integer vieJoueur) {
         this.vieJoueur = vieJoueur;
     }
@@ -72,9 +77,15 @@ public class Personnage implements Serializable{
         this.sc = sc;
     }
 
-    public void setClient(InterfaceClient client) {
-        this.client = client;
-    }
+ 
     
+
+
+    public void setVie(Integer vie) {
+        this.vieJoueur = vie;
+        if(vieJoueur <0){
+        vieJoueur=0;
+        }
+    }
     
 }
