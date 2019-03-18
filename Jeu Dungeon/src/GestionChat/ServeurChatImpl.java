@@ -20,10 +20,12 @@ public class ServeurChatImpl extends UnicastRemoteObject implements ServeurChat{
     
     private ArrayList<String>registre;
     private Registre base;
+    private String nom;
+    private ArrayList<Personnage>  listeP;
     
-    public ServeurChatImpl(Registre base)throws RemoteException{
+    public ServeurChatImpl(String nom)throws RemoteException{
        registre=new ArrayList<>();
-       this.base=base;
+       this.nom=nom;
        
     }
     
@@ -31,8 +33,8 @@ public class ServeurChatImpl extends UnicastRemoteObject implements ServeurChat{
     public void broadcasterMessage(int numeropiece) throws RemoteException
     {
         String s=new String();
-         String requete;
-         requete="select message from \"MESSAGEPIECE\" where numerop='"+numeropiece+"'" ;
+        String requete = null;
+        requete="select message from \"MESSAGEPIECE\" where numerop='"+numeropiece+"'" ;
      
          s=base.executerRequete(requete);
        
@@ -41,10 +43,12 @@ public class ServeurChatImpl extends UnicastRemoteObject implements ServeurChat{
     }
 
    
-    public void recupererMessage(String message, InterfaceClient client,int numeroP) throws RemoteException {
-      String requete;
-       requete="INSERT INTO \"MESSAGEPIECE\" VALUES('"+numeroP+"','"+client.getNom()+"'";
-       requete+=",CURRENT_TIMESTAMP,'"+message+"')";
+    public void recupererMessage(String message, InterfaceClient client,int numeroPiece) throws RemoteException {
+      String requete = null;
+      
+       requete="INSERT INTO \"MESSAGEPIECE\" VALUES("+numeroPiece+",'"+client.getNom()+"','"+message+"')";
+      // requete+=",CURRENT_TIMESTAMP,'"+message+"')";
+        System.out.println("test: "+requete);
        base.insertion(requete);
    
     }
@@ -52,7 +56,7 @@ public class ServeurChatImpl extends UnicastRemoteObject implements ServeurChat{
     public void recupererListeClients(ArrayList<Personnage>  liste) throws RemoteException {
          //To change body of generated methods, choose Tools | Templates.
        
-        //this.listeP=liste;
+        this.listeP=liste;
     }
 
 

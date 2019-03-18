@@ -17,8 +17,6 @@ import java.util.ArrayList;
  */
 public interface ServeurChat extends  Remote{
     
-   
-  
     public void broadcasterMessage(int numeropiece) throws RemoteException;
     public void recupererMessage(String message,InterfaceClient client,int numeroP)throws RemoteException;
     public void recupererListeClients(ArrayList<Personnage>  liste) throws RemoteException;
