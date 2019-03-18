@@ -5,9 +5,13 @@
  */
 package GestionServer;
 
+import GestionClient.ClientImpl;
 import GestionClient.InterfaceClient;
+import GestionPersonnage.Personnage;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,5 +19,8 @@ import java.rmi.RemoteException;
  */
 public interface InterfaceLabyrinhe extends Remote{
    public void connexion(InterfaceClient client) throws RemoteException;
+   public void CreationDuLabyrinthe() throws RemoteException, SQLException;
+   public ArrayList<Personnage> recupererListe()throws RemoteException;
+   public int  recupererNumeroPiece(InterfaceClient client)throws RemoteException;
     
 }
