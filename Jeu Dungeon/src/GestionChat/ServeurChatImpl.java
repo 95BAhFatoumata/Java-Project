@@ -20,23 +20,33 @@ public class ServeurChatImpl extends UnicastRemoteObject implements ServeurChat{
     
     private ArrayList<String>registre;
     private Registre base;
-    private String nom;
+   private String nom;
     private ArrayList<Personnage>  listeP;
     
     public ServeurChatImpl(String nom)throws RemoteException{
        registre=new ArrayList<>();
-       this.nom=nom;
-       
+     this.nom=nom;
+       base =new Registre();
+       listeP = new ArrayList<>();
     }
     
-    @Override
+ 
     public void broadcasterMessage(int numeropiece) throws RemoteException
     {
         String s=new String();
         String requete = null;
-        requete="select message from \"MESSAGEPIECE\" where numerop='"+numeropiece+"'" ;
+        requete="select message from \"MESSAGEPIECE\" where numeroPiece='"+numeropiece+"'";
      
          s=base.executerRequete(requete);
+         for(Personnage a:listeP)
+        {
+            if(a.getNumeropiece()==numeropiece)
+            {
+               
+             a.getClient().affichage(s);   
+            }
+             
+        }
        
         
         
@@ -52,7 +62,7 @@ public class ServeurChatImpl extends UnicastRemoteObject implements ServeurChat{
        base.insertion(requete);
    
     }
-
+    @Override
     public void recupererListeClients(ArrayList<Personnage>  liste) throws RemoteException {
          //To change body of generated methods, choose Tools | Templates.
        
