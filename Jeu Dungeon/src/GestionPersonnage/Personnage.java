@@ -7,6 +7,7 @@ package GestionPersonnage;
 
 import GestionClient.InterfaceClient;
 import java.io.Serializable;
+import java.rmi.RemoteException;
 import java.util.Scanner;
 
 /**
@@ -86,6 +87,10 @@ public class Personnage implements Serializable{
         if(vieJoueur <0){
         vieJoueur=0;
         }
+    }
+     public void affichage(String s) throws RemoteException {
+       
+        System.out.println(s);
     }
     
 }
