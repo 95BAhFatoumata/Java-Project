@@ -7,6 +7,7 @@ package GestionServer;
 
 import ConnexionBD.Registre;
 import GestionChat.ServeurChatImpl;
+import GestionCombat.CombatImpl;
 import java.net.MalformedURLException;
 import java.rmi.AlreadyBoundException;
 import java.rmi.Naming;
@@ -31,19 +32,30 @@ public class LancerServer {
          
        
         System.out.println("# Création du Labyrinthe #");
-        labyrinthe.CreationDuLabyrinthe();//A terminer
+        labyrinthe.CreationDuLabyrinthe();
        
             System.out.println(""+labyrinthe.toString());
-        Naming.rebind("rmi://localhost:1099/jeu", labyrinthe);
+           Naming.rebind("rmi://localhost:1099/jeu", labyrinthe);
         //creation du serveur de chat sur le port 1098
-         LocateRegistry.createRegistry(1098);
+        LocateRegistry.createRegistry(1098);
         ServeurChatImpl serveurChat=new ServeurChatImpl("chat");
-      System.out.println(""+serveurChat.toString());
+        System.out.println(""+serveurChat.toString());
        try {
              Naming.rebind("rmi://localhost:1098/chat",serveurChat);
-        } catch (MalformedURLException ex) {
-      Logger.getLogger(ServeurChatImpl.class.getName()).log(Level.SEVERE, null, ex);
-      }
+           }       
+       catch (MalformedURLException ex) 
+           {
+                    Logger.getLogger(ServeurChatImpl.class.getName()).log(Level.SEVERE, null, ex);
+           }
+       
+        //creation du serveur de combat sur le port 1097
+       /* LocateRegistry.createRegistry(1097);
+        CombatImpl serverCombat = new CombatImpl();
+        System.out.println(""+serverCombat.toString());
+        Naming.rebind("rmi://localhost:1097/combat", (Remote) serverCombat);*/
         
+                
+       
+       
     }   
 }

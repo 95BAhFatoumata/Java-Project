@@ -150,5 +150,20 @@ public class LabyrintheImpl extends UnicastRemoteObject implements InterfaceLaby
                
         return listeClient.chercherPersonnage(client.getNom());
     }
+
+    @Override
+    public String InfoDest(ClientImpl client) throws RemoteException {
+         //To change body of generated methods, choose Tools | Templates.
+         
+         // A chaque deplacement on l'informe de sa position et les portes pour se deplacer
+         String requete="select portepi,numpidest from \"TRAVERSER\" where numerop='"
+             +listeClient.chercherPersonnage(client.getNom())+"'";
+   requete+="\n TAPEZ N POUR NORD \n TAPEZ S POUR SUD \n TAPEZ O pour OUEST \n TAPEZ E pour EST \n TAPEZ R POUR RESTER";
+       
+      
+   
+        return requete;
+    }
+
     
 }
