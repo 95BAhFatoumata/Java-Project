@@ -17,5 +17,9 @@ public interface InterfaceClient extends Remote{
     public String getNom() throws RemoteException;
     public int getNumeropiece()throws RemoteException;
     public void setNumeropiece(int numeropiece)throws RemoteException;
+
+   // public void affichage(String s);
+
+    public void affichage(String s) throws RemoteException;
     
 }

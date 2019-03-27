@@ -91,4 +91,17 @@ public class ClientImpl extends UnicastRemoteObject implements InterfaceClient,S
            }
         
     }
+    public void recupererMessage(String message) throws RemoteException {
+       //To change body of generated methods, choose Tools | Templates.
+       System.out.println(message);
+       
+    }
+
+    @Override
+    public void affichage(String s) throws RemoteException {
+        //To change body of generated methods, choose Tools | Templates.
+      System.out.println(s);
+    }
+   
+      
 }
