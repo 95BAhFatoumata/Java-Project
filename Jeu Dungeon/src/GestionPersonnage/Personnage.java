@@ -6,6 +6,7 @@
 package GestionPersonnage;
 
 import GestionClient.InterfaceClient;
+import GestionServer.Orientation;
 import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.util.Scanner;
@@ -21,12 +22,20 @@ public class Personnage implements Serializable{
     private Integer vieJoueur = 10;
     private Integer nbreCombat=0;
      private InterfaceClient client;
+     private Orientation position;
 
     public Personnage( String nom, int numeropiece, InterfaceClient client) {
         
         this.nom = nom;
         this.numeropiece = numeropiece;
         this.client=client;
+        this.position = new Orientation(0, 0);
+
+    }
+    public Personnage (InterfaceClient client) throws RemoteException{
+        this.client= client;
+        this.nom=client.getNom();
+        this.position=new Orientation(0, 0);
     }
 
    
@@ -92,5 +101,15 @@ public class Personnage implements Serializable{
        
         System.out.println(s);
     }
+
+    public Orientation getPosition() {
+        return position;
+    }
+
+    public void setPosition(Orientation position) {
+        this.position = position;
+    }
+    
+
     
 }
