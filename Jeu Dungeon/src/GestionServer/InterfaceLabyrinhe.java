@@ -22,7 +22,10 @@ public interface InterfaceLabyrinhe extends Remote{
    public void CreationDuLabyrinthe() throws RemoteException, SQLException;
    public ArrayList<Personnage> recupererListe()throws RemoteException;
    public int  recupererNumeroPiece(InterfaceClient client)throws RemoteException;
+   public void seDeplacerVers(String direction, InterfaceClient client ) throws RemoteException, InvalidCoordException;
 
     public String InfoDest(ClientImpl client) throws RemoteException;
+    public String TestPossibilite_deplacement(InterfaceClient client) throws RemoteException, InvalidCoordException;
+    public String AfficherLab() throws RemoteException;
     
 }

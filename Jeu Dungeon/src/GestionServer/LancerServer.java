@@ -26,9 +26,12 @@ public class LancerServer {
     
     public static void main(String[] args) throws RemoteException, MalformedURLException, AlreadyBoundException, SQLException {
         
-         System.out.println("on lance le serveur sur le port 1099");
+        int Longueur=4;
+        int largeur=4;
+        System.out.println("on lance le serveur sur le port 1099");
          LocateRegistry.createRegistry(1099);
-         LabyrintheImpl labyrinthe = new LabyrintheImpl("laby");
+        // LabyrintheImpl labyrinthe = new LabyrintheImpl("laby");
+         InterfaceLabyrinhe labyrinthe = LabyrintheImpl.Nouveau("alpha", Longueur, largeur, 5, 3);
          
        
         System.out.println("# Création du Labyrinthe #");
