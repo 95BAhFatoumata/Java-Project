@@ -79,7 +79,11 @@ public class Monstre  implements Serializable{
 }
 
     public boolean isEtatMonstre() {
+        etatMonstre=false;
+        if(vieMonstre==0)
         return etatMonstre;
+        else 
+            return true;
     }
 
     public void setEtatMonstre(boolean etatMonstre) {

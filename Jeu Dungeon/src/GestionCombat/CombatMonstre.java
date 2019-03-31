@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -23,11 +24,13 @@ public class CombatMonstre implements Runnable{
     private   Personnage p;
     private String choixclient; 
     private Registre bd;
+     private ArrayList<Monstre> lesMonstre;
 
-    public CombatMonstre(ArrayList<Personnage> liste, InterfaceClient client, Registre bd) {
+    public CombatMonstre(ArrayList<Personnage> liste,ArrayList<Monstre> lesMonstres, InterfaceClient client, Registre bd) {
         this.liste = liste;
         this.client = client;
         this.bd = bd;
+        this.lesMonstre=lesMonstres;
     }
  
    
@@ -51,7 +54,12 @@ public class CombatMonstre implements Runnable{
         return null;
  
       }
-
+     public void ajouterVieMonstre(int numeroPiece)
+    {
+        lesMonstre.get(numeroPiece).setVieMonstre(lesMonstre.get(numeroPiece).getVieMonstre()+1);
+    
+    }
+     
     @Override
     public void run() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
