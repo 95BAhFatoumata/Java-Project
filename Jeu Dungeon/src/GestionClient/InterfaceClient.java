@@ -5,6 +5,7 @@
  */
 package GestionClient;
 
+import GestionPersonnage.Personnage;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
@@ -21,5 +22,9 @@ public interface InterfaceClient extends Remote{
    // public void affichage(String s);
 
     public void affichage(String s) throws RemoteException;
+
+    public void setPersonnage(Personnage pers) throws RemoteException;
+
+    public Personnage getPersonnage() throws RemoteException;
     
 }

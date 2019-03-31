@@ -5,6 +5,7 @@
  */
 package GestionClient;
 
+import GestionPersonnage.Personnage;
 import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -19,6 +20,7 @@ public class ClientImpl extends UnicastRemoteObject implements InterfaceClient,S
     private String nom;
     private Scanner sc;
      int numeropiece = 0;
+     private Personnage personnage;
 
     public String getNom() {
         return nom;
@@ -59,7 +61,8 @@ public class ClientImpl extends UnicastRemoteObject implements InterfaceClient,S
         System.out.println("##############################################");
         System.out.println("# 1.Se deplacer ou Rester dans la même piece #");
         System.out.println("# 2. Chatter                                 #");
-        System.out.println("# 3.Quitter                                  #");
+        System.out.println("# 3. combat                                  #");
+        System.out.println("# 4.Quitter                                  #");
         System.out.println("##############################################");
         
     }
@@ -101,6 +104,19 @@ public class ClientImpl extends UnicastRemoteObject implements InterfaceClient,S
     public void affichage(String s) throws RemoteException {
         //To change body of generated methods, choose Tools | Templates.
       System.out.println(s);
+    }
+
+    @Override
+    public void setPersonnage(Personnage pers) throws RemoteException{
+         //To change body of generated methods, choose Tools | Templates.
+         this.personnage=pers;
+    }
+
+    @Override
+    public Personnage getPersonnage()  throws RemoteException{
+        //To change body of generated methods, choose Tools | Templates.
+        return personnage;
+        
     }
    
       
